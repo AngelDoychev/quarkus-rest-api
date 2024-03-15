@@ -1,8 +1,14 @@
 # quarkus-rest-api
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
-
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+It has an MVC architecture design with Rest API end points for CRUD operations on Employees.
+The database is using Mysql and Jakarta to instantiate the Employee table in the quarkus_db schema.
+I took advantage of the PanacheRepository interface which I implemented in the EmployeeRepository class
+and added an extra service layer where the CRUD operations logic is done.
+I used a record class of the Employee as a DTO so we don't expose the entity directly.
+The endpoints are in the EmployeeResource class and play a crucial role as the bridge for request-response data.
+All data traffic will be handled and filtered here. I utilized the @Path annotation to register endpoints and injected
+the EmployeeService class.
 
 ## Running the application in dev mode
 
@@ -37,6 +43,30 @@ You can create a native executable using:
 ```shell script
 ./mvnw package -Dnative
 ```
+
+
+## Dependecies
+
+RESTEasy Reactive dan RESTEasy Reactive Jackson: these two libraries implement the Jakarta REST API commonly used in Spring, allowing each entity created to be generated into a database table.
+
+Hibernate ORM with Panache: this library will provide the PanacheRepository class for ORM implementation.
+
+MYSQL driver
+
+Hibernate Validator: validates user input data.
+
+
+<img src="https://i.postimg.cc/wMKmHdck/quarkus-get-By-Id.png" alt="getById">
+
+<img src="https://i.postimg.cc/4dRfx4qn/quarkus-get-All.png" alt="getAll">
+
+<img src="https://i.postimg.cc/vmFFWqzN/quarkus-add.png" alt="add">
+
+<img src="https://i.postimg.cc/d0vNsznw/quarkus-update.png" alt="update">
+
+<img src="https://i.postimg.cc/kD3Fjbpq/quarkus-delete.png" alt="delete">
+
+
 
 Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
 ```shell script
